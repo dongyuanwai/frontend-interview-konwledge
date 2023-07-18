@@ -45,9 +45,9 @@ function QuestionCard() {
         {items.map((item) => (
           <div className=" w-[30%] h-8" 
             onClick={()=>handClick(item)}
+            key={item.id}
           >
             <CardItem 
-            key={item.id}
             item={item}
           />
           </div>
