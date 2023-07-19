@@ -4,8 +4,7 @@ import Image from "next/image"
 import CardItem from "./CardItem"
 import DialogCard from './DialogCard'
 
-function QuestionCard() {
-  const [items, setItems] = useState([])
+function QuestionCard({questionList}) {
   const [showDialog,setShowDialog] = useState(false)
   const [currentQuestion,setCurrentQuestion] = useState({})
 
@@ -18,12 +17,6 @@ function QuestionCard() {
     console.log(e,"eeee")
     setShowDialog(false)
   }
-  useEffect(() => {
-    if(items.length>10) return
-    for (let i = 0; i < 16; i++) {
-      setItems((prev) => [...prev, { id: i, name: `test${i}` }])
-    }
-  }, [])
 
   return (
     <div className='w-full h-[45vh] rounded-lg border
@@ -42,12 +35,13 @@ function QuestionCard() {
         <div >js</div>
       </div>
       <div className='flex h-[42vh] py-4 flex-col flex-wrap gap-3'>
-        {items.map((item) => (
-          <div className=" w-[30%] h-8" 
+        {questionList&&questionList.map((item,index) => (
+          <div className=" w-[40%] h-8 text-sm" 
             onClick={()=>handClick(item)}
             key={item.id}
           >
             <CardItem 
+            index={index}
             item={item}
           />
           </div>
