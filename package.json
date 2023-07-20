@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@notionhq/client": "^2.2.7",
+    "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "10.4.14",
+    "markdown-it": "^13.0.1",
     "next": "13.4.9",
     "postcss": "8.4.25",
     "react": "18.2.0",
