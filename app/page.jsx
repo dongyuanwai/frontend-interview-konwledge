@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import QuestionCard from "@/components/QuestionCard"
 
+import feList from "@/public/fe_interview.json"
 
 function Home() {
   const [questionList, setQuestionList] = useState([]);
@@ -14,7 +15,7 @@ function Home() {
       .then((res) => res.json())
       .then((res) => {
         if (res) {
-          setQuestionList(res.sort((a,b)=>a.id-b.id)); 
+          setQuestionList(res.sort((a, b) => a.id - b.id));
         }
       })
       .catch((error) => {
@@ -37,10 +38,10 @@ function Home() {
   return (
     <section className="w-full  gap-4 p-6 space-y-4
     columns-2">
-        <QuestionCard questionList={jsList} />
-        <QuestionCard questionList={vueList} />
-        <QuestionCard questionList={httpList} />
-        <QuestionCard />
+      <QuestionCard questionList={jsList} />
+      <QuestionCard questionList={vueList} />
+      <QuestionCard questionList={httpList} />
+      <QuestionCard />
     </section>
   )
 }

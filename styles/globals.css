@@ -82,3 +82,15 @@
   background: #ccc; 
   border-radius: 5px;
 }
+
+.questioncard::-webkit-scrollbar {
+  width: 10px;
+  height: 10px; 
+}
+.questioncard::-webkit-scrollbar-thumb {
+  background: #ccc; 
+  border-radius: 5px;
+}
+.questioncard{
+  border: 1px solid red;
+}

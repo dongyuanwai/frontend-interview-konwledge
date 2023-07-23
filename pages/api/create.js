@@ -9,7 +9,7 @@ export default async function handler( req,res ) {
     return;
   }
   console.log("添加成功")
-  const data = await notionServer.create(req.body);
+  const data = await notionServer.create();
   res.status(200).json(data);
   console.log("添加成功2",data)
 }

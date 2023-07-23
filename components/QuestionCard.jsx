@@ -5,6 +5,7 @@ import CardItem from "./CardItem"
 import DialogCard from './DialogCard'
 
 function QuestionCard({questionList}) {
+  console.log("questionList",questionList)
   const [showDialog,setShowDialog] = useState(false)
   const [currentQuestion,setCurrentQuestion] = useState({})
 
