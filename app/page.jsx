@@ -2,12 +2,12 @@
 import { useState, useEffect } from "react";
 import QuestionCard from "@/components/QuestionCard"
 
-import feList from "@/public/fe_interview.json"
 
 function Home() {
   const [questionList, setQuestionList] = useState([]);
   const [jsList, setJsList] = useState([]);
   const [vueList, setVueList] = useState([]);
+  const [reactList, setReactList] = useState([]);
   const [httpList, setHttpList] = useState([]);
 
   const getQuestionList = () => {
@@ -30,9 +30,11 @@ function Home() {
   useEffect(() => {
     const jsItems = questionList.filter(item => item.tags === "JavaScript");
     const vueItems = questionList.filter(item => item.tags === "Vue");
+    const reactItems = questionList.filter(item => item.tags === "React");
     const httpItems = questionList.filter(item => item.tags === "HTTP");
     setJsList(jsItems);
     setVueList(vueItems);
+    setReactList(reactItems);
     setHttpList(httpItems);
   }, [questionList]);
   return (
@@ -41,7 +43,7 @@ function Home() {
       <QuestionCard questionList={jsList} />
       <QuestionCard questionList={vueList} />
       <QuestionCard questionList={httpList} />
-      <QuestionCard />
+      <QuestionCard questionList={reactList}/>
     </section>
   )
 }
