@@ -4,23 +4,20 @@ import Image from "next/image"
 import CardItem from "./CardItem"
 import DialogCard from './DialogCard'
 
-function QuestionCard({questionList}) {
-  console.log("questionList",questionList)
+function QuestionCard({questionList,type}) {
   const [showDialog,setShowDialog] = useState(false)
   const [currentQuestion,setCurrentQuestion] = useState({})
-
   const handClick = (item)=>{
     console.log("点击了item",item)
     setCurrentQuestion(item)
     setShowDialog(true)
   }
   const closeDialog = (e)=>{
-    console.log(e,"eeee")
     setShowDialog(false)
   }
 
   return (
-    <div className='w-full h-[45vh] rounded-lg border
+    <div className='w-full h-[45vh] rounded-lg box-border  border overflow-auto
      border-gray-300 bg-white/20 px-6 py-2 cursor-pointer 
      hover:shadow-2xl hover:bg-white/40 transition-all 
      duration-900'>
@@ -28,16 +25,16 @@ function QuestionCard({questionList}) {
         p-2 '>
           <div className="w-2 rounded-[50%] h-2 bg-green-500"></div>
         <Image
-          src={`/images/icon_js.png`}
+          src={`/images/${type}.svg`}
           width={30}
           height={30}
           alt="jslogo"
         ></Image >
-        <div >js</div>
+        <div >{type}</div>
       </div>
-      <div className='flex h-[42vh] py-4 flex-col flex-wrap gap-3'>
+      <div className='flex  py-4  flex-wrap gap-3'>
         {questionList&&questionList.map((item,index) => (
-          <div className=" w-[40%] h-8 text-sm" 
+          <div className=" w-[45%] h-8 text-sm" 
             onClick={()=>handClick(item)}
             key={item.id}
           >

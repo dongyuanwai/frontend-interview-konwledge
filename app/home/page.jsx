@@ -4,6 +4,7 @@ import React from 'react'
 function page() {
   const create=()=>{
     const question = {
+      id:100,
       desc:"1212",
       category:"",
       options:"",
@@ -11,9 +12,11 @@ function page() {
       title:"这是题目",
       tag:"JavaScript",
     }
-    fetch("http://localhost:3000/api/create",{
+    fetch("/api/create",{
       method: "post",
-    }).then((res) => res.json())
+    }).then((res) => {
+      console.log("res",res)
+    })
       .catch((error) => {
         console.error(JSON.stringify(question));
         console.error(error);

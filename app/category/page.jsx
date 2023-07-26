@@ -6,8 +6,21 @@ import feList from "@/public/fe_interview.json"
 
 // 1. 引入markdown-it库
 import markdownIt from 'markdown-it'
+import hljs from "highlight.js";
+// import "highlight.js/styles/default.css"; // 或者选择其他样式，默认使用default.css
+import 'highlight.js/styles/monokai-sublime.css'
+
 // 2. 生成实例对象
-const md = new markdownIt()
+const md = new markdownIt({
+    highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+            try {
+                return hljs.highlight(str, { language: lang }).value;
+            } catch (_) { }
+        }
+        return ""; // 使用额外的默认转义
+    },
+});
 
 function Category() {
     const [questionList, setQuestionList] = useState({});
@@ -21,7 +34,7 @@ function Category() {
     // 3. 解析markdown语法
     const parse = (data) => setHtmlString(md.render(data));
 
-
+    // 处理数据
     const handleData = () => {
         const info = new Set();
         const questionMap = {
@@ -103,81 +116,6 @@ function Category() {
                 list: []
             },
         }
-        const questionObj = [
-            {
-                tagId: 10,
-                type: "JavaScript",
-                list: []
-            }, {
-                tagId: 11,
-                type: "CSS",
-                list: []
-            }, {
-                tagId: 12,
-                type: "HTML",
-                list: []
-            }, {
-                tagId: 13,
-                type: "React",
-                list: []
-            }, {
-                tagId: 14,
-                type: "Vue",
-                list: []
-            }, {
-                tagId: 17,
-                type: "趣味题",
-                list: []
-            }, {
-                tagId: 18,
-                type: "Node",
-                list: []
-            }, {
-                tagId: 19,
-                type: "TypeScript",
-                list: []
-            }, {
-                tagId: 20,
-                type: "性能优化",
-                list: []
-            }, {
-                tagId: 21,
-                type: "前端安全",
-                list: []
-            }, {
-                tagId: 32,
-                type: "选择题",
-                list: []
-            }, {
-                tagId: 26,
-                type: "编程题",
-                list: []
-            }, {
-                tagId: 31,
-                type: "leetcode",
-                list: []
-            }, {
-                tagId: 30,
-                type: "计算机基础",
-                list: []
-            }, {
-                tagId: 27,
-                type: "设计模式",
-                list: []
-            }, {
-                tagId: 23,
-                type: "小程序",
-                list: []
-            }, {
-                tagId: 28,
-                type: "工程化",
-                list: []
-            }, {
-                tagId: 29,
-                type: "工具",
-                list: []
-            },
-        ]
         feList.map((item) => {
             info.add(item.tagId);
             if (questionMap[item.tagId]) {
@@ -186,32 +124,37 @@ function Category() {
                 questionMap[100].list.push(item)
             }
         })
-        setQuestionList(()=>questionMap)
+        setQuestionList(() => questionMap)
     }
     useEffect(() => {
         handleData()
     }, []);
     useEffect(() => {
-        setCurrentQuestionList(()=>questionList[_tagId])
-    }, [questionList,_tagId]);
+        setCurrentQuestionList(() => questionList[_tagId])
+    }, [questionList, _tagId]);
 
 
     useEffect(() => {
-        parse(currentQuestion.explanation||'')
+        parse(currentQuestion.explanation || '')
     }, [currentQuestion])
 
     return (
         <div className='flex h-[100vh]'>
-            {currentQuestionList&&(
+            {currentQuestionList && (
                 <div className="w-full flex">
-                    <SlideItem 
-                        currentQuestionList={currentQuestionList} 
+                    <SlideItem
+                        currentQuestionList={currentQuestionList}
                         setCurrentQuestion={setCurrentQuestion}
                     />
-                    <div 
-                        className=' w-full h-full flex justify-center p-4 overflow-auto'
+                    <div
+                        className='w-full h-full flex flex-col items-center'
                     >
-                        <div className="prose"  dangerouslySetInnerHTML={{ __html: htmlString }} >
+                        <div className="w-full bg-white static text-center py-2 drop-shadow-2xl">
+                            {currentQuestion.title}
+                        </div>
+                        <div className="w-full flex pt-2 justify-center overflow-auto">
+                            <div className="prose" dangerouslySetInnerHTML={{ __html: htmlString }} >
+                            </div>
                         </div>
                     </div>
                 </div>

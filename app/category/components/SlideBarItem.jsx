@@ -3,18 +3,23 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 const SlideItem = ({currentQuestionList,setCurrentQuestion}) => {
-  
+  console.log("currentQuestionList",currentQuestionList)
   const [activeTabId, setactiveTabId] = useState()
   const handleClick = (item)=>{
     setCurrentQuestion(item)
     setactiveTabId(item._id)
   }
   return (
-    <div className='w-[16rem] h-full border-r-1 show shadow-md px-1 overflow-auto'>
+    <div className='w-[18rem] h-full border-r-1 show shadow-md px-1 overflow-auto'>
         {/* LOGO */}
-        <div className='mx-6 flex
-          flex-col items-center justify-center'>
-          Fr-In-Kn
+        <div className='mx-6 flex py-2 items-center justify-center'>
+          <Image
+            src={`/images/${currentQuestionList.type}.svg`}
+            width={30}
+            height={30}
+            alt='img'
+          ></Image>
+          <div>{currentQuestionList.type}</div>
         </div>
         {/* 导航 */}
         <div className=''>

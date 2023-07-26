@@ -1,6 +1,11 @@
 import '@/styles/globals.css';
 import SlideBar from '@/components/SlideBar';
 
+export const metadata = {
+  title: '前端知识点',
+  description: '前端知识库,前端知识点',
+}
+
 function RootLayout({ children }) {
     return (
       <html lang='en'>

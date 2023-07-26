@@ -38,13 +38,15 @@ function Home() {
     setHttpList(httpItems);
   }, [questionList]);
   return (
-    <section className="w-full  gap-4 p-6 space-y-4
-    columns-2">
-      <QuestionCard questionList={jsList} />
-      <QuestionCard questionList={vueList} />
-      <QuestionCard questionList={httpList} />
-      <QuestionCard questionList={reactList}/>
-    </section>
+    <div className="w-full h-full  overflow-auto">
+      <section className=" gap-4 p-6 space-y-4
+    md:columns-2">
+        <QuestionCard questionList={jsList} type="JavaScript" />
+        <QuestionCard questionList={vueList} type="Vue" />
+        <QuestionCard questionList={httpList} type="HTTP" />
+        <QuestionCard questionList={reactList} type="React" />
+      </section>
+    </div>
   )
 }
 
