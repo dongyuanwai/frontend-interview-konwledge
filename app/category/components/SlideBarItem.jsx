@@ -3,7 +3,6 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 const SlideItem = ({currentQuestionList,setCurrentQuestion}) => {
-  console.log("currentQuestionList",currentQuestionList)
   const [activeTabId, setactiveTabId] = useState()
   const handleClick = (item)=>{
     setCurrentQuestion(item)

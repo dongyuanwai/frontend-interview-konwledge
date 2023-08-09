@@ -30,10 +30,8 @@ function Category() {
     const [htmlString, setHtmlString] = useState('')  // 存储解析后的html字符串
     const searchParams = useSearchParams()
     let _tagId = searchParams.get('tagId')
-
     // 3. 解析markdown语法
     const parse = (data) => setHtmlString(md.render(data));
-
     // 处理数据
     const handleData = () => {
         const info = new Set();

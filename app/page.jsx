@@ -1,4 +1,5 @@
 "use client";
+import { usePathname } from 'next/navigation'
 import { useState, useEffect } from "react";
 import QuestionCard from "@/components/QuestionCard"
 
@@ -9,7 +10,6 @@ function Home() {
   const [vueList, setVueList] = useState([]);
   const [reactList, setReactList] = useState([]);
   const [httpList, setHttpList] = useState([]);
-
   const getQuestionList = () => {
     fetch('/api/question')
       .then((res) => res.json())

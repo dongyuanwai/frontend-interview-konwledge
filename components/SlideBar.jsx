@@ -1,8 +1,8 @@
 "use client";
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-
+import { usePathname, useSearchParams } from 'next/navigation'
 const Nav = () => {
   const [slidItems, setSlidItems] = useState([
     {
@@ -44,7 +44,15 @@ const Nav = () => {
     }, 
   ])
   
-  const [activeTabId, setactiveTabId] = useState(slidItems[0].tagId)
+  const pathname = usePathname()
+  const tagId = useSearchParams().get('tagId');
+  const [activeTabId, setactiveTabId] = useState()
+
+  useEffect(()=>{
+    if(tagId){
+      setactiveTabId(tagId)
+    }
+  },[tagId])
   return (
     <div className='w-[16rem] h-full border-r-1  shadow-md px-4'>
       <nav>
@@ -63,7 +71,7 @@ const Nav = () => {
             <Link href={item.href} key={item.tagId}>
               <div className={`block cursor-pointer rounded-lg
               hover:bg-pink-100 hover:text-purple-500
-              ${activeTabId === item.tagId ? "bg-pink-100 text-purple-500" : ""}`}
+              ${activeTabId == item.tagId ? "bg-pink-100 text-purple-500" : ""}`}
                 onClick={() => setactiveTabId(item.tagId)}
               >
                 <div className='mb-2 w-full flex items-center gap-2 
