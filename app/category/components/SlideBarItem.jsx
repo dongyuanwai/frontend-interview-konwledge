@@ -1,13 +1,25 @@
 "use client";
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import { useRouter ,useSearchParams} from 'next/navigation';
 
 const SlideItem = ({currentQuestionList,setCurrentQuestion}) => {
   const [activeTabId, setactiveTabId] = useState()
+  const question_id = useSearchParams().get('name');
+  const tagId = useSearchParams().get('tagId');
+  const router = useRouter();
   const handleClick = (item)=>{
     setCurrentQuestion(item)
     setactiveTabId(item._id)
+    router.push(`/category?tagId=${tagId}&name=${item._id}`)
   }
+  useEffect(()=>{
+    if(!currentQuestionList.list||currentQuestionList.list.length==0) return
+    const _questions = currentQuestionList.list.filter((item)=>item._id ==question_id )
+    if(question_id&&_questions.length>0){
+      handleClick(_questions[0])
+    }
+  },[])
   return (
     <div className='w-[18rem] h-full border-r-1 show shadow-md px-1 overflow-auto'>
         {/* LOGO */}

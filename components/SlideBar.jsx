@@ -49,10 +49,13 @@ const Nav = () => {
   const [activeTabId, setactiveTabId] = useState()
 
   useEffect(()=>{
+    console.log("tagId-=-=",tagId)
     if(tagId){
       setactiveTabId(tagId)
+    }else{
+      setactiveTabId(1)
     }
-  },[tagId])
+  },[])
   return (
     <div className='w-[16rem] h-full border-r-1  shadow-md px-4'>
       <nav>
