@@ -1,7 +1,9 @@
 # 前端知识图谱
-短小、精悍、直击要害
-
-学习、面试必备之良器
+<div align="center" >
+	<img src="./public/logo.png" alt="logo" />
+  <p>短小、精悍、直击要害</p>
+  <p>学习、面试必备之良器</p>
+</div>
 
 
 ## 安装 markdown-it 和hljs
