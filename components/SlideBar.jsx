@@ -41,6 +41,12 @@ const Nav = () => {
       icon: "React",
       href:"/category?tagId=13",
       list: []
+    }, {
+      tagId: 21,
+      type: "每日随机",
+      icon: "random",
+      href:"/random?tagId=21",
+      list: []
     }, 
   ])
   
@@ -57,7 +63,7 @@ const Nav = () => {
     }
   },[])
   return (
-    <div className='w-[16rem] h-full border-r-1  shadow-md px-4'>
+    <div className='w-[16rem] h-full border-r-1  shadow-md px-4 flex flex-col pb-4'>
       <nav>
         {/* LOGO */}
         <div className='my-2 h-16 flex flex-col items-center justify-center'>
@@ -69,7 +75,7 @@ const Nav = () => {
           ></Image>
         </div>
         {/* 导航 */}
-        <div className=' px-1'>
+        <div className='px-1 border '>
           {slidItems.map((item) => item.href&&(
             <Link href={item.href} key={item.tagId}>
               <div className={`block cursor-pointer rounded-lg
@@ -95,6 +101,9 @@ const Nav = () => {
           ))}
         </div>
       </nav>
+      <div className='border border-red-600 flex flex-col justify-end'>
+        <div></div>
+      </div>
     </div>
   )
 }
