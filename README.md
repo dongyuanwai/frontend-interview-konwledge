@@ -44,3 +44,6 @@ const md = new markdownIt({
 />
 
 ```
+
+## env文件
+<img src="./public/img/env.png">
