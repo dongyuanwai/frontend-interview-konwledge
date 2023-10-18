@@ -9,59 +9,59 @@ const Nav = () => {
       tagId: 1,
       type: "总览",
       icon: "all",
-      href:"/",
+      href: "/",
       list: []
-    },{
+    }, {
       tagId: 12,
       type: "HTML",
       icon: "HTML",
-      href:"/category?tagId=12",
+      href: "/category?tagId=12",
       list: []
-    },{
+    }, {
       tagId: 11,
       type: "CSS",
       icon: "CSS",
-      href:"/category?tagId=11",
+      href: "/category?tagId=11",
       list: []
-    },{
+    }, {
       tagId: 10,
       type: "JavaScript",
       icon: "JavaScript",
-      href:"/category?tagId=10",
+      href: "/category?tagId=10",
       list: []
-    },{
+    }, {
       tagId: 14,
       type: "Vue",
       icon: "Vue",
-      href:"/category?tagId=14",
+      href: "/category?tagId=14",
       list: []
-    },{
+    }, {
       tagId: 13,
       type: "React",
       icon: "React",
-      href:"/category?tagId=13",
+      href: "/category?tagId=13",
       list: []
     }, {
       tagId: 21,
       type: "每日随机",
       icon: "random",
-      href:"/random?tagId=21",
+      href: "/random?tagId=21",
       list: []
-    }, 
+    },
   ])
-  
+
   const pathname = usePathname()
   const tagId = useSearchParams().get('tagId');
   const [activeTabId, setactiveTabId] = useState()
 
-  useEffect(()=>{
-    console.log("tagId-=-=",tagId)
-    if(tagId){
+  useEffect(() => {
+    console.log("tagId-=-=", tagId)
+    if (tagId) {
       setactiveTabId(tagId)
-    }else{
+    } else {
       setactiveTabId(1)
     }
-  },[])
+  }, [])
   return (
     <div className='w-[16rem] h-full border-r-1  shadow-md px-4 flex flex-col pb-4'>
       <nav>
@@ -75,8 +75,8 @@ const Nav = () => {
           ></Image>
         </div>
         {/* 导航 */}
-        <div className='px-1 border '>
-          {slidItems.map((item) => item.href&&(
+        <div className='px-1'>
+          {slidItems.map((item) => item.href && (
             <Link href={item.href} key={item.tagId}>
               <div className={`block cursor-pointer rounded-lg
               hover:bg-pink-100 hover:text-purple-500
@@ -101,8 +101,26 @@ const Nav = () => {
           ))}
         </div>
       </nav>
-      <div className='border border-red-600 flex flex-col justify-end'>
-        <div></div>
+      <div className='flex flex-1 flex-col justify-end'>
+        <div className=' flex justify-around'>
+        <Link href='https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzIyODEyMjM5OA==&action=getalbum&album_id=1535446259916996609&uin=&key=&devicetype=Windows+11+x64&version=6309071d&lang=zh_CN&ascene=7&session_us=gh_2b4a77490489' target = "_blank">
+          <Image
+            src={`/images/wechat.svg`}
+            width={32}
+            height={32}
+            alt='img'
+          ></Image>
+          </Link>
+          
+          <Link href={'https://github.com/dongyuanwai/frontend-interview-konwledge'} target = "_blank">
+            <Image
+              src={`/images/github.svg`}
+              width={32}
+              height={32}
+              alt='img'
+            ></Image>
+          </Link>
+        </div>
       </div>
     </div>
   )
