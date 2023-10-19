@@ -101,18 +101,28 @@ const Nav = () => {
           ))}
         </div>
       </nav>
-      <div className='flex flex-1 flex-col justify-end'>
-        <div className=' flex justify-around'>
-        <Link href='https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzIyODEyMjM5OA==&action=getalbum&album_id=1535446259916996609&uin=&key=&devicetype=Windows+11+x64&version=6309071d&lang=zh_CN&ascene=7&session_us=gh_2b4a77490489' target = "_blank">
+      <div className='flex flex-1 flex-col justify-between'>
+        <div className='text-center'>
           <Image
-            src={`/images/wechat.svg`}
-            width={32}
-            height={32}
+            src={`/img/oldCode.jpg`}
+            height={256}
+            width={256}
             alt='img'
           ></Image>
+          <p>扫码关注</p>
+          <p>获取更多面试解析</p>
+        </div>
+        <div className=' flex justify-around'>
+          <Link href='https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzIyODEyMjM5OA==&action=getalbum&album_id=1535446259916996609&uin=&key=&devicetype=Windows+11+x64&version=6309071d&lang=zh_CN&ascene=7&session_us=gh_2b4a77490489' target="_blank">
+            <Image
+              src={`/images/wechat.svg`}
+              width={32}
+              height={32}
+              alt='img'
+            ></Image>
           </Link>
-          
-          <Link href={'https://github.com/dongyuanwai/frontend-interview-konwledge'} target = "_blank">
+
+          <Link href={'https://github.com/dongyuanwai/frontend-interview-konwledge'} target="_blank">
             <Image
               src={`/images/github.svg`}
               width={32}
