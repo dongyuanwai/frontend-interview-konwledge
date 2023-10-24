@@ -102,7 +102,7 @@ const Nav = () => {
         </div>
       </nav>
       <div className='flex flex-1 flex-col justify-between'>
-        <div className='text-center'>
+        <div className='text-center invisible'>
           <Image
             src={`/img/oldCode.jpg`}
             height={256}
