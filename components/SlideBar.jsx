@@ -50,7 +50,9 @@ const Nav = () => {
     },
   ])
 
+  // pathname 获取的是路由
   const pathname = usePathname()
+  // useSearchParams().get('tagId') 获取的是参数tagId 的值
   const tagId = useSearchParams().get('tagId');
   const [activeTabId, setactiveTabId] = useState()
 
@@ -92,7 +94,7 @@ const Nav = () => {
                     width={30}
                     height={30}
                     alt='img'
-                  ></Image>
+                  />
                   <div>{item.type}</div>
                 </div>
               </div>
@@ -102,7 +104,7 @@ const Nav = () => {
         </div>
       </nav>
       <div className='flex flex-1 flex-col justify-between'>
-        <div className='text-center invisible'>
+        <div className={`text-center ${activeTabId == 21 ? "" : "invisible"}`}>
           <Image
             src={`/img/oldCode.jpg`}
             height={256}
