@@ -34,7 +34,7 @@ function QuestionCard({questionList,type}) {
       </div>
       <div className='flex  py-4  flex-wrap gap-3'>
         {questionList&&questionList.map((item,index) => (
-          <div className=" w-[45%] h-8 text-sm" 
+          <div className=" w-[45%] text-sm" 
             onClick={()=>handClick(item)}
             key={item.id}
           >
